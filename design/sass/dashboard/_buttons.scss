@@ -1,0 +1,26 @@
+.btn {
+	background-color: $black;
+	color: #fff;
+	font-size: 0.8rem;
+	border: none;
+	padding: 0.75rem;
+	cursor: pointer;
+	outline: none;
+	@include border-radius(3px);
+	@include transition(color 0.25s ease, background-color 0.25s ease);
+}
+.btn-orange {
+	background-color: $orange;
+	color: #fff;
+	&:hover {
+		background-color: lighten($orange,10%);
+	}
+}
+.btn-flat {
+	background-color: transparent;
+	color: $black;
+}
+.btn-flat-orange:hover {
+	background-color: lighten($orange,10%);
+	color: #fff;
+}

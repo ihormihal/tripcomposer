@@ -1,0 +1,76 @@
+<div id="popup-transfer-{{popup.transfer.id}}" class="popup animated fadeInUp">
+	<div class="popup-bg"></div>
+	<div class="popup-conteiner">
+		<div class="popup-window">
+			<div class="popup-close" ng-click="close.popup.transfer()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="tc tc-transfer"></i> Transfer Search</h3>
+
+				<div class="row gaprow">
+					<div class="col-xs-12">
+						<input 
+						value="{{popup.transfer.pointFrom.city.name}}"
+						disabled
+						type="text" 
+						placeholder="Введите адрес" 
+						class="full single" 
+						>
+						<input 
+						value="{{popup.transfer.pointTo.city.name}}" 
+						disabled
+						type="text" 
+						placeholder="Введите адрес" 
+						class="full single"
+						>
+
+						<pickadate 
+							time="popup.transfer.startDate"
+							on-pick="timePick.transfer"
+							placeholder="Departure date"
+						></pickadate>
+
+					</div>
+				</div>
+
+				<div class="row gaprow">
+					<div class="col-xs-6">
+						<select class="full">
+							<option value="">Persons</option>
+						</select>
+					</div>
+					<div class="col-xs-6">
+					</div>
+					<div class="col-md-12">
+						<div class="checkbox-buttons">
+							<div class="checkbox" ng-repeat="type in settings.transfers">
+								<input id="ch-transfer-{{type}}" type="checkbox" checklist-model="popup.transfer.transferTypes" checklist-value="type">	
+								<label for="ch-transfer-{{type}}" class="tc-{{type}}" title="{{type}}"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<input class="btn btn-orange upc right" type="button" ng-click="search.transfer()" value="Search">
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="popup-window animated fadeInUp" ng-show="popup.transfer.results">
+			<div class="popup-close" ng-click="popupTransferClose()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="fa fa-search"></i> Search Results</h3>
+				<table class="table table-search-results">
+					<tr ng-repeat="result in popup.transfer.results">
+						<td class="icon"><i class="tc tc-transfer"></i></td>
+						<td class="airports">{{result.from}} - {{result.to}}</td>
+						<td class="time">{{result.dep | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+						<td class="time">{{result.arr | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+						<td class="time">{{result.time | date:'HH:mm'}}</td>
+						<td class="price">{{result.price}}</td>
+					</tr>
+				</table>
+				<input class="btn btn-flat btn-flat-orange upc right" type="button" ng-click="set.transfer()" value="OK">
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>

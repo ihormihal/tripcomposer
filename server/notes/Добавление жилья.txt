@@ -1,0 +1,84 @@
+Добавление жилья
+POST http://tripcomposer.net/rest/service/accommodation/add
+Request:
+{
+"pointId": 1,
+"checkIn": 1430438400000,
+"checkOut": 1431216000000,
+"accommodationTypes": ["camping", "hostel", "hotel","free_accommodation"],
+"locationTypes": ["beach", "downtown", "historical", "mountain"]
+}
+
+Response:
+{
+    "type": "addAccommodationResponse",
+    "success": true,
+    "accommodationId": 1,
+    "tripBoard": {
+        "points": [
+            {
+                "id": 1,
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "Lvov"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "startDate": 1430438400000,
+                "endDate": 1431216000000,
+                "accommodations": [
+                    {
+                        "id": 1,
+                        "checkIn": 1430438400000,
+                        "checkOut": 1431216000000,
+                        "accommodationTypes": [
+                            "camping",
+                            "hostel",
+                            "free_accommodation",
+                            "hotel"
+                        ],
+                        "locationTypes": [
+                            "mountain",
+                            "beach",
+                            "historical",
+                            "downtown"
+                        ]
+                    }
+                ],
+                "activities": [],
+                "notes": []
+            },
+            {
+                "id": 2,
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "Kyiv"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "startDate": 1438300800000,
+                "endDate": 1440979200000,
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            }
+        ],
+        "transfers": [
+            {
+                "id": 1,
+                "startDate": 1438300900000,
+                "pointFrom": 1,
+                "pointTo": 2,
+                "transferTypes": [
+                    "bus",
+                    "car",
+                    "train"
+                ]
+            }
+        ],
+        "tripTotal": 0,
+        "userTripTotal": 0
+    }
+}

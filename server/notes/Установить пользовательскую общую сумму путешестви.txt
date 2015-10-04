@@ -1,0 +1,14 @@
+Установить пользовательскую общую сумму путешествия
+POST http://tripcomposer.net/rest/service/tripboard/usertotal/set
+Request:
+{
+    "userTripTotal": 1200
+}
+
+Response:
+{
+    "type": "setUserTripTotalResponse",
+    "success": true,
+    "message": "",
+    "userTripTotal": 1200
+}

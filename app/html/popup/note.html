@@ -1,0 +1,14 @@
+<div id="popup-note-{{popup.note.id}}" class="popup animated fadeInUp">
+	<div class="popup-bg"></div>
+	<div class="popup-container">
+		<div class="popup-window">
+			<div class="popup-close" ng-click="close.popup.note()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="tc tc-note"></i> Add Your Note</h3>
+				<input type="text" class="single full" placeholder="Add Your Heading" ng-model="popup.note.title" />
+				<input type="text" class="single full" placeholder="Add Text" ng-model="popup.note.text"/>
+				<input class="btn btn-orange upc" type="button" ng-click="set.note()" ng-show="popup.note.title" value="Save">
+			</div>
+		</div>
+	</div>
+</div>

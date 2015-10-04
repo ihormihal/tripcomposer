@@ -1,0 +1,25 @@
+<div class="popup animated fadeInUp">
+	<div class="popup-bg"></div>
+	<div class="popup-container">
+		<div class="popup-window">
+			<div class="popup-close" ng-click="close.popup.point()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="fa fa-globe"></i> Add place</h3>
+				<input googlecity ng-model="place.city.name" type="text" placeholder="Введите адрес" class="full autocomplete">
+				<ul class="list result" ng-show="place.city.name">
+					<li><span class="label">City:</span><span class="value">{{place.city.name}}</span></li>
+					<li><span class="label">Country:</span><span class="value">{{place.country.name}}</span></li>
+					<li><span class="label">Location:</span><span class="value">{{place.city.coordinates}}</span></li>
+				</ul>
+				<pickadate 
+				time="place.time"
+				placeholder="Date"
+				on-pick="timePick.point"
+				></pickadate>
+				<div class="gap"></div>
+				<input class="btn btn-orange upc right" type="button" ng-click="set.point();" ng-show="place.city.name" value="OK">
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+Изменение поинта
+POST http://tripcomposer.net/rest/service/edit/point
+JSON Request:
+{
+"pointId": 1,
+"countryName": "Ukraine",
+"cityName": "Odessa",
+"coordinates":"xxx:yyy",
+"startDate": 1438300800000,
+"endDate": 1440979200000
+}
+
+JSON Response:
+{
+    "type": "editPointResponse",
+    "success": true,
+    "message": "",
+    "pointId": 1,
+    "tripBoard": {
+        "points": [
+            {
+                "id": 1,
+                "startDate": "2015-07-31T03:00:00+03:00",
+                "endDate": "2015-08-31T03:00:00+03:00",
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "Odessa"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            }
+        ],
+        "transfers": []
+    }
+}

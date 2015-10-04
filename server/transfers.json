@@ -1,0 +1,49 @@
+{
+	"results": [
+		{
+			"id": 1,
+			"from": "City From",
+			"to": "City To",
+			"time": "10800",
+			"dep": "1437388200",
+			"arr": "1437399000",
+			"price": "$200"
+		},
+		{
+			"id": 2,
+			"from": "City From",
+			"to": "City To",
+			"time": "10800",
+			"dep": "1437388200",
+			"arr": "1437399000",
+			"price": "$200"
+		},
+		{
+			"id": 3,
+			"from": "City From",
+			"to": "City To",
+			"time": "10800",
+			"dep": "1437388200",
+			"arr": "1437399000",
+			"price": "$200"
+		},
+		{
+			"id": 4,
+			"from": "City From",
+			"to": "City To",
+			"time": "10800",
+			"dep": "1437388200",
+			"arr": "1437399000",
+			"price": "$200"
+		},
+		{
+			"id": 5,
+			"from": "City From",
+			"to": "City To",
+			"time": "10800",
+			"dep": "1437388200",
+			"arr": "1437399000",
+			"price": "$200"
+		}
+	]
+}

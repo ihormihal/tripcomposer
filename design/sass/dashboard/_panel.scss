@@ -1,0 +1,31 @@
+.control-panel {
+	position: absolute; z-index: 2000; top: 20px; left: 0; display: block;
+	.control {
+		display: block; 
+		background-color: #fff; 
+		color: $blue;
+		width: 45px;
+		height: 45px;
+		margin-bottom: 10px;
+		font-size: 20px;
+		line-height: 45px;
+		text-align: center;
+		@include border-radius(4px);
+		@include box-shadow(0 1px 3px 0 rgba(0,0,0,0.5));
+		@include transition(color 0.25s ease);
+
+		&:hover {
+			color: $orange;
+		}
+	}
+}
+.total-price {
+	position: absolute; z-index: 2000; bottom: 20px; right: 20px; display: block;
+	width: 480px;
+	padding: 1rem;
+	background-color: #fff;
+	@include border-radius(2px);
+	@include box-shadow(0 1px 3px 0 rgba(0,0,0,0.5));
+	.title, .link {margin: 0; padding: 0; color: $grey; font-weight: 300; font-size: 1rem;}
+	.price {color: $blue; font-size: 2rem; font-weight: 300; padding: 0.5rem 0;}
+}

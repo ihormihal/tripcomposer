@@ -1,0 +1,42 @@
+<div id="popup-accommodation-{{popup.accommodation.id}}" class="popup animated fadeInUp">
+	<div class="popup-bg"></div>
+	<div class="popup-conteiner">
+		<div class="popup-window">
+			<div class="popup-close" ng-click="close.popup.accommodation()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="tc tc-accommodation"></i> Add Accommodation</h3>
+				<div class="row gaprow">
+					<div class="col-xs-6">
+						<pickadate time="popup.accommodation.checkIn" placeholder="Check In" on-pick="timePick.accommodation.in"></pickadate>
+					</div>
+					<div class="col-xs-6">
+						<pickadate time="popup.accommodation.checkOut" placeholder="Check Out" on-pick="timePick.accommodation.out"></pickadate>
+					</div>
+					<div class="col-xs-6"><input type="text" class="full" placeholder="Persons" /></div>
+					<div class="col-xs-6"><input type="text" class="full" placeholder="Nights" /></div>
+				</div>
+
+				<input class="btn btn-orange upc right" type="button" ng-click="search.accommodation()" value="Search">
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="popup-window animated fadeInUp" ng-show="popup.accommodation.results">
+			<div class="popup-close" ng-click="popupAccommodationClose()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="fa fa-search"></i> Search Results</h3>
+				<table class="table table-search-results">
+					<tr ng-repeat="result in popup.accommodation.results">
+						<td class="image"><img ng-src="{{result.image}}" alt=""></td>
+						<td class="description">
+							<div class="name">{{result.name}}</div>
+							<div class="time">{{result.arr | date:'dd-MM-yyyy'}} - {{result.dep | date:'dd-MM-yyyy'}}</div>
+						</td>
+						<td class="price">{{result.price}}</td>
+					</tr>
+				</table>
+				<input class="btn btn-flat btn-flat-orange upc right" type="button" ng-click="set.accommodation()" value="OK">
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>

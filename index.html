@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>trip composer grid test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- favicons -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="design/css/normalize.css" type="text/css">
+	<link rel="stylesheet" href="design/css/tc-font.css" type="text/css" />
+	<link rel="stylesheet" href="design/css/font-awesome.min.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="design/css/animate.css" type="text/css">
+
+	<link rel="stylesheet" href="design/css/grid.css" type="text/css">
+	<link rel="stylesheet" href="design/css/pickadate.css" type="text/css">
+
+	<link rel="stylesheet" href="lib/plugins/ionSlider/css/ion.rangeSlider.css" type="text/css">
+	<link rel="stylesheet" href="lib/plugins/ionSlider/css/ion.rangeSlider.skinTc.css" type="text/css">
+
+	<link rel="stylesheet" href="design/css/style.css" type="text/css">
+</head>
+<body ng-app="app">
+<div class="container"></div>
+<main id="dashboard" ng-controller="mainController">
+
+	<div id="panel">
+		<ul class="control-panel">
+			<li add-point class="control"><i class="tc tc-point"></i></li>
+			<li add-transfer class="control"><i class="tc tc-transfer"></i></li>
+			<li add-accommodation class="control" ng-show="canvas.points.length"><i class="tc tc-accommodation"></i></li>
+			<li add-activity class="control" ng-show="canvas.points.length"><i class="tc tc-activity"></i></li>
+			<li add-note class="control" ng-show="canvas.points.length"><i class="tc tc-note"></i></li>
+		</ul>
+	</div>
+
+	<div id="popup">
+		<ng-include src="'app/html/popup/point.html'" ng-show="popup.point"></ng-include>
+		<ng-include src="'app/html/popup/transfer.html'" ng-show="popup.transfer.id"></ng-include>
+		<ng-include src="'app/html/popup/accommodation.html'" ng-show="popup.accommodation"></ng-include>
+		<ng-include src="'app/html/popup/activity.html'" ng-show="popup.activity"></ng-include>
+		<ng-include src="'app/html/popup/note.html'" ng-show="popup.note"></ng-include>
+	</div>
+	<div id="tooltip">
+		<ng-include src="'app/html/tooltip/point.html'" ng-show="tooltip.point"></ng-include>
+		<ng-include src="'app/html/tooltip/transfer.html'" ng-show="tooltip.transfer"></ng-include>
+		<ng-include src="'app/html/tooltip/accommodation.html'" ng-show="tooltip.accommodation"></ng-include>
+		<ng-include src="'app/html/tooltip/activity.html'" ng-show="tooltip.activity"></ng-include>
+		<ng-include src="'app/html/tooltip/note.html'" ng-show="tooltip.note"></ng-include>
+	</div>
+
+	<div id="contextmenu">
+		<ng-include src="'app/html/context/point.html'" ng-show="context.point"></ng-include>
+		<ng-include src="'app/html/context/transfer.html'" ng-show="context.transfer"></ng-include>
+		<ng-include src="'app/html/context/accommodation.html'" ng-show="context.accommodation"></ng-include>
+		<ng-include src="'app/html/context/activity.html'" ng-show="context.activity"></ng-include>
+		<ng-include src="'app/html/context/note.html'" ng-show="context.note"></ng-include>
+	</div>
+
+	<!--div id="price">
+		<div class="total-price" ng-init="totalPrice = '$0'">
+			<div class="title">My Budget</div>
+			<div class="row gaprow">
+				<div class="col-xs-3">
+					<div class="price">{{data.tripTotal | currency : $ : 0}}</div>
+				</div>
+				<div class="col-xs-9">
+					<ionslider 
+						type="single"
+						grid="true"
+						min="0"
+						max="1500"
+						prefix="$"
+						from="data.tripTotal"
+						on-finish="userTotalUpdated"
+					></ionslider>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<a class="link" href="javascript:void(0)">Search</a>
+				</div>
+				<div class="col-xs-9">
+					<a class="link" href="#">Book</a>
+				</div>
+			</div>
+		</div>
+	</div-->
+
+	<div id="price">
+		<div class="total-price">
+			<div class="title">My Budget</div>
+			<div class="row gaprow">
+				<div class="col-xs-3">
+					<div class="price">{{totalPrice | currency : $ : 0}}</div>
+				</div>
+				<div class="col-xs-9">
+					<ionslider 
+						type="single"
+						grid="true"
+						min="0"
+						max="1500"
+						prefix="$"
+						from="totalPrice"
+						on-finish="userTotalUpdated"
+					></ionslider>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<a class="link" href="javascript:void(0)">Search</a>
+				</div>
+				<div class="col-xs-9">
+					<a class="link" href="#">Book</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="scroll" class="scroll">
+		<svg ng-custom-selection id="canvas" style="height: {{canvas.height}}px; width: {{canvas.width}}px" ng-context="canvasContext()">
+
+			<g id="temp-elements">
+				<g 
+				ng-repeat="transfer in canvas.temp.transfers"
+				class="transfer"
+				id="transfer-{{transfer.id}}"
+				ng-include="'app/svg/transfer/'+transfer.transferTypes[0]+'.svg'"
+				ng-transform="translate({{transfer.x}},{{transfer.y}})"
+				></g>
+				<g 
+				ng-repeat="accommodation in canvas.temp.accommodations"
+				class="accommodation"
+				id="accommodation-{{accommodation.id}}"
+				ng-include="'app/svg/accommodation.svg'"
+				ng-transform="translate({{accommodation.x}},{{accommodation.y}})"
+				></g>
+				<g 
+				ng-repeat="activity in canvas.temp.activities"
+				class="activity"
+				id="activity-{{activity.id}}"
+				ng-include="'app/svg/activity.svg'"
+				ng-transform="translate({{activity.x}},{{activity.y}})"
+				></g>
+				<g 
+				ng-repeat="note in canvas.temp.notes"
+				class="note"
+				id="note-{{note.id}}"
+				ng-include="'app/svg/note.svg'"
+				ng-transform="translate({{note.x}},{{note.y}})"
+				></g>
+			</g>
+		
+			<g id="grid-days">
+				<g ng-repeat="day in canvas.days" ng-transform="translate({{($index+1)*settings.dx}},0)" class="day">
+					<line x1="0" x2="0" y1="0" y2="100%" stroke="#2fa3d6" style="stroke-width: 1px; stroke-dasharray: 1px, 5px;"></line>
+					<text x="5" ng-y="{{settings.dy-5}}" fill="#2fa3d6" style="text-anchor: start; font-size: 0.75rem;">{{day.time|date:'dd.MM'}}</text>
+				</g>
+			</g>
+			<g id="grid-countries">
+				<g ng-repeat="country in canvas.countries" ng-transform="translate(0,{{($index+1)*settings.dy}})" class="country">
+					<line x1="0" x2="100%" y1="0" y2="0" stroke="#2fa3d6" style="stroke-width: 1px; stroke-dasharray: 1px, 5px;"></line>
+					<text ng-x="{{settings.dx-5}}" y="-5" fill="#2fa3d6" style="text-anchor: end; font-size: 0.75rem;">{{country.name}}</text>
+				</g>
+			</g>
+			<g id="points" class="points">
+				<g 
+				trip-point
+				ng-repeat="point in canvas.points"
+				ng-transform="translate({{point.x-50}},{{point.y-110}})"
+				data-index="{{$index}}"
+				ng-context="contextmenu.point(point)"
+				ng-class="point.selected ? 'point selected' : 'point'"
+				>
+				</g>
+			</g>
+			<g class="connections">
+				<g class="connection" ng-repeat="connection in canvas.connections">
+					<line 
+					ng-x1="{{canvas.points[connection.index_from].x}}" 
+					ng-x2="{{canvas.points[connection.index_to].x}}" 
+					ng-y1="{{canvas.points[connection.index_from].y - 42}}" 
+					ng-y2="{{canvas.points[connection.index_to].y - 42}}" 
+					fill="none" 
+					stroke="#2fa3d6"></line>
+					<g class="transfers" ng-transform="translate(
+					{{(canvas.points[connection.index_from].x+canvas.points[connection.index_to].x)/2 - 17}},
+					{{(canvas.points[connection.index_from].y+canvas.points[connection.index_to].y)/2 - 42 - 17}}
+					)">
+						<g 
+						ng-repeat="transfer in connection.transfers"
+						ng-context="contextmenu.transfer(transfer)"
+						ng-mousedown="open.tooltip.transfer(transfer,$event)"
+						class="transfer"
+						id="transfer-{{transfer.id}}"
+						ng-include="'app/svg/transfer/'+transfer.transferTypes[0]+'.svg'"
+						ng-transform="translate(0,{{$index*5}})"
+						></g>
+						<foreignObject x="0" y="0" height="100%" width="28px" ng-show="connection.transfers.length > 1">			
+							<div class="dropdown-list">
+								<div class="up"><i class="fa fa-chevron-up"></i></div>
+								<div class="item"
+									ng-repeat="transfer in connection.transfers"
+									ng-mousedown="open.tooltip.transfer(transfer,$event)"
+									ng-context="contextmenu.transfer(transfer)"
+									><i class="tc tc-{{transfer.transferTypes[0]}}"></i>
+								</div>
+							</div>
+						</foreignObject>
+					</g>
+				</g>
+			</g>
+
+			<rect 
+				class="selection"
+				ng-show="canvas.selection.visible"
+				ng-x="{{canvas.selection.x}}" 
+				ng-y="{{canvas.selection.y}}" 
+				ng-width="{{canvas.selection.width}}" 
+				ng-height="{{canvas.selection.height}}" />
+		</svg>
+	</div>
+</main>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" type="text/javascript"></script>
+<script src="lib/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="lib/angular.min.js" type="text/javascript"></script>
+
+<!--PLUGINS-->
+<script src="lib/plugins/pickadate/picker.js" type="text/javascript"></script>
+<script src="lib/plugins/pickadate/picker.date.js" type="text/javascript"></script>
+<script src="lib/plugins/pickadate/picker.time.js" type="text/javascript"></script>
+
+<script src="lib/plugins/ionSlider/ion.rangeSlider.min.js" type="text/javascript"></script>
+
+
+<script src="app/app.js" type="text/javascript"></script>
+<script src="app/script.js" type="text/javascript"></script>
+
+<!-- APP MODELES -->
+<script src="app/directives/checklist-model.js" type="text/javascript"></script>
+<script src="app/directives/ionSlider.js" type="text/javascript"></script>
+<script src="app/directives/pickadate.js" type="text/javascript"></script>
+<script src="app/directives/svg.js" type="text/javascript"></script>
+<script src="app/directives/point.js" type="text/javascript"></script>
+<script src="app/directives/transfer.js" type="text/javascript"></script>
+<script src="app/directives/accommodation.js" type="text/javascript"></script>
+<script src="app/directives/activity.js" type="text/javascript"></script>
+<script src="app/directives/note.js" type="text/javascript"></script>
+<script src="app/directives/google.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+	"results": [
+		{
+			"id": 1,
+			"image": "/server/60x45.png",
+			"name": "Hotel name",
+			"dep": "1437388200000",
+			"arr": "1437399000000",
+			"price": "$200"
+		},
+		{
+			"id": 2,
+			"image": "/server/60x45.png",
+			"name": "Hotel name",
+			"dep": "1437388200000",
+			"arr": "1437399000000",
+			"price": "$200"
+		},
+		{
+			"id": 3,
+			"image": "/server/60x45.png",
+			"name": "Hotel name",
+			"dep": "1437388200000",
+			"arr": "1437399000000",
+			"price": "$200"
+		},
+		{
+			"id": 4,
+			"image": "/server/60x45.png",
+			"name": "Hotel name",
+			"dep": "1437388200000",
+			"arr": "1437399000000",
+			"price": "$200"
+		},
+		{
+			"id": 5,
+			"image": "/server/60x45.png",
+			"name": "Hotel name",
+			"dep": "1437388200000",
+			"arr": "1437399000000",
+			"price": "$200"
+		}
+	]
+}

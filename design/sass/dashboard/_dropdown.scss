@@ -1,0 +1,21 @@
+.dropdown-list {
+	display: none;
+	width: 28px;
+	background-color: #fff;
+	@include border-radius(14px);
+	@include box-shadow(0 1px 3px 0 rgba(0,0,0,0.5));
+	.up {
+		color: #fff;
+		text-align: center; line-height: 28px; font-size: 0.5rem;
+		cursor: pointer;
+		background-color: $orange_light;
+		@include border-radius(14px);
+		@include box-shadow(0 1px 3px 0 rgba(0,0,0,0.5));
+	}
+	.item {
+		color: $black;
+		text-align: center; font-size: 0.75rem; line-height: 28px;
+		@include transition(color 0.25s ease);
+		&:hover {color: $orange;}
+	}
+}

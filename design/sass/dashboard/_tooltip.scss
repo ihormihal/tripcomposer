@@ -1,0 +1,29 @@
+.tooltip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1100;
+	.tooltip-container {
+		background-color: #fff;
+		@include border-radius(3px);
+		@include box-shadow(0 1px 3px 0 rgba(0,0,0,0.5));
+		&:before {
+			display: block; content: '';
+			position: absolute;
+			top: 20px; left: -20px;
+			border: 10px solid transparent;
+			border-right: 10px solid $grey;
+		}
+		.tooltip-close {
+			position: absolute; z-index: 1110;
+			color: $grey;
+			top: 5px; right: 5px;
+		}
+		.tooltip-content {
+			padding: 1rem;
+			.title {color: $black; font-size: 1rem;}
+			.descr, .time {color: $grey; font-size: 0.8rem;}
+			
+		}
+	} 
+}

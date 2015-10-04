@@ -1,0 +1,11 @@
+<div class="tooltip animated fadeInUp" style="top: {{tooltip.point.y - 110}}px; left: {{tooltip.point.x + 50}}px">
+	<div class="tooltip-container">
+		<div class="tooltip-close" ng-click="close.tooltip.point()"><i class="fa fa-times"></i></div>
+		<div class="tooltip-content">
+			<div class="title">{{tooltip.point.city.name}}</div>
+			<div class="descr">{{tooltip.point.country.name}}</div>
+			<div class="descr" ng-show="tooltip.point.location"><i class="fa fa-location-arrow"></i> {{tooltip.point.location}}</div>
+			<div class="time"><i class="fa fa-clock-o"></i> {{tooltip.point.time|date:'dd.MM HH:mm'}}</div>
+		</div>
+	</div>
+</div>

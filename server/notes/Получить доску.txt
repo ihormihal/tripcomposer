@@ -1,0 +1,46 @@
+Получить всю доску:
+POST http://tripcomposer.net/rest/service/get/tripboard
+JSON Request:
+{}
+
+JSON Response:
+{
+    "type": "getTripboardResponse",
+    "success": true,
+    "message": "",
+    "tripBoard": {
+        "points": [
+            {
+                "id": 1,
+                "startDate": "2015-05-01T03:00:00+03:00",
+                "endDate": "2015-05-10T03:00:00+03:00",
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "Lvov"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            },
+            {
+                "id": 2,
+                "startDate": "2015-07-31T03:00:00+03:00",
+                "endDate": "2015-08-31T03:00:00+03:00",
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "Kyiv"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            }
+        ],
+        "transfers": []
+    }
+}

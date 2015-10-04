@@ -1,0 +1,18 @@
+<div id="popup-activity-{{popup.activity.id}}" class="popup animated fadeInUp">
+	<div class="popup-bg"></div>
+	<div class="popup-container">
+		<div class="popup-window">
+			<div class="popup-close" ng-click="close.popup.activity()"><i class="fa fa-times"></i></div>
+			<div class="popup-content">
+				<h3 class="popup-title"><i class="fa fa-globe"></i> Add activity</h3>
+				<input googleplace ng-model="place" value="{{place.city.title}}" type="text" placeholder="Введите адрес" class="full autocomplete activity-addr">
+				<ul class="list result" ng-show="place.name">
+					<li><span class="label">Place:</span><span class="value">{{place.name}}</span></li>
+					<li><span class="label">Country:</span><span class="value">{{place.country.title}}</span></li>
+					<li><span class="label">Location:</span><span class="value">{{place.location}}</span></li>
+				</ul>
+				<input class="btn full" type="button" ng-click="set.activity(place)" ng-show="place.name" value="Готово">
+			</div>
+		</div>
+	</div>
+</div>

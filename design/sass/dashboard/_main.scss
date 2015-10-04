@@ -1,0 +1,82 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+	height: 100%; width: 100%;
+	line-height: 1.5;
+	font-family: 'Roboto', sans-serif;
+	color: $black;
+	body {height: 100%; width: 100%; background: $grey; padding: 0; margin: 0;}
+}
+.visible {display: block !important;}
+svg:not(:root) {overflow: visible;}
+
+
+ul.list {display: block; margin: 0; padding: 0; list-style: none;}
+.full {width: 100%;}
+.upc {text-transform: uppercase;}
+
+#dashboard {
+	margin-top: 0;
+	position: relative;
+	@include no-select();
+	background-color: #eef9fd;
+	.scroll {
+		overflow: scroll;
+		min-height: 100%;
+		height: 600px; width: 100%; 
+		position: relative;
+	}
+}
+#canvas {
+	position: absolute;
+	top: 0; left: 0; z-index: 1000;
+	shape-rendering: optimizeSpeed;
+	#grid-countries, #grid-days {shape-rendering: crispEdges;}
+	.point {
+		.plus {
+			opacity: 0;
+			@include transition(opacity 0.25s ease);
+			circle {
+				fill: $light_grey;
+				@include transition(opacity 0.25s ease, fill 0.25s ease);
+			}
+			&:hover {
+				circle {
+					fill: $blue;
+				}
+			}
+		}
+		.dropdown-list {
+			.plus {
+				opacity: 1;
+				color: $blue;
+			}
+		}
+		&:hover {
+			.plus {opacity: 1;}
+		}
+		.label {
+			&.name {font-size: 0.8rem; fill: $black;}
+			&.time {font-size: 0.6rem; display: block; fill: $orange;}
+		}
+		&.selected .balloon path {fill: $orange;}
+	}
+	.selection {
+		fill: rgba(0, 0, 0, 0.15);
+	}
+}
+//google places
+.pac-container {z-index: 8000;}

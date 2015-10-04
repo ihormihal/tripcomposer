@@ -1,0 +1,23 @@
+Если ошибка на любом этапе, то success==false и message непустой.
+Например, удаляем несуществующий поинт:
+JSON Response:
+{
+    "type": "removePointResponse",
+    "success": false,
+    "message": "No point for remove",
+    "tripBoard": {
+        "points": [],
+        "transfers": []
+    }
+}
+Изменяем несуществующий поинт:
+JSON Response:
+{
+    "type": "editPointResponse",
+    "success": false,
+    "message": "No point for edit",
+    "tripBoard": {
+        "points": [],
+        "transfers": []
+    }
+}

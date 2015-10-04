@@ -1,0 +1,23 @@
+.context-menu {
+	position: absolute; top: 0; left: 0; z-index: 1100;
+	min-width: 200px;
+	padding: 0;
+	background-color: $white;
+	@include box-shadow(rgba(0,0,0,0.4) 1px 1px 3px);
+	ul {
+		border-bottom: 1px solid $light_grey;
+		padding: 0.25rem 0;
+		li {
+			font-size: 0.75rem;
+			line-height: 1rem;
+			padding: 0.4rem 1rem;
+			cursor: default;
+			i {width: 1.5rem;}
+			&:hover {
+				background-color: $blue;
+				color: $white;
+			}
+		}
+		&:last-child {border-bottom: none;}
+	}
+}

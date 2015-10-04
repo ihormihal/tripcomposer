@@ -1,0 +1,11 @@
+<div class="tooltip animated fadeInUp"
+	style="top: {{tooltip.transfer.position.y - 11}}px; left: {{tooltip.transfer.position.x + 50}}px">
+	<div class="tooltip-container">
+		<div class="tooltip-close" ng-click="close.tooltip.transfer()"><i class="fa fa-times"></i></div>
+		<div class="tooltip-content">
+			<div class="title">{{tooltip.transfer.pointFrom.city.name}} - {{tooltip.transfer.pointTo.city.name}}</div>
+			<div class="descr">{{tooltip.transfer.pointFrom.country.name}} - {{tooltip.transfer.pointTo.country.name}}</div>
+			<div class="time"><i class="fa fa-clock-o"></i> {{tooltip.transfer.startDate|date:'dd.MM.yyyy, HH:mm'}}</div>
+		</div>
+	</div>
+</div>

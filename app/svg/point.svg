@@ -1,0 +1,105 @@
+<svg>
+	<rect class="rect" width="100" height="125" fill="transparent" />
+	<text transform="translate(50)" pointer-events="none" text-anchor="middle" class="label name">{{point.city.name}}</text>
+	<text transform="translate(50)" y="1em" pointer-events="none" text-anchor="middle" class="label time">{{point.time|date:'dd.MM HH:mm'}}</text>
+	<g class="balloon" transform="translate(32,15)" ng-click="open.tooltip.point(point,$event)">
+		<path fill="#31A3D6" d="M8.235,2.891c2.869-1.855,6.275-2.896,9.696-2.89c3.718-0.045,7.431,1.121,10.47,3.258
+			c2.618,1.842,4.753,4.38,6.071,7.3c1.176,2.558,1.715,5.394,1.607,8.204c-0.146,4.071-1.507,8.003-3.339,11.608
+			c-2.62,5.056-6.184,9.564-10.112,13.665c-1.243,1.272-2.515,2.518-3.846,3.698c-0.303,0.258-0.575,0.558-0.929,0.748
+			c-2.418-2.242-4.686-4.643-6.813-7.162c-2.574-3.059-4.944-6.304-6.904-9.793c-1.918-3.448-3.468-7.168-3.983-11.105
+			c-0.391-3.047-0.023-6.2,1.124-9.057C2.639,7.908,5.119,4.912,8.235,2.891z M16.95,6.704c-1.542,0.178-3.044,0.725-4.324,1.606
+			c-1.875,1.272-3.281,3.232-3.857,5.425c-0.477,1.701-0.438,3.532,0.048,5.227c0.591,1.999,1.836,3.811,3.528,5.035
+			c1.606,1.192,3.593,1.839,5.587,1.875c2.043,0.015,4.088-0.626,5.745-1.825c2.041-1.456,3.455-3.755,3.852-6.228
+			c0.236-1.447,0.153-2.951-0.285-4.353c-0.696-2.383-2.387-4.444-4.558-5.639C20.947,6.885,18.918,6.465,16.95,6.704z"/>
+		<path fill="#31A3D6" d="M18.885,51.345c-0.346,0.294-0.657,0.638-1.062,0.854c-2.052-1.903-4.01-3.907-5.877-5.992
+			c-6.027,0.815-10.287,2.798-10.287,5.118c0,3.047,7.336,5.518,16.387,5.518s16.387-2.47,16.387-5.518c0-2.322-4.267-4.306-10.3-5.12
+			c-0.285,0.305-0.567,0.615-0.856,0.916C21.857,48.575,20.404,49.998,18.885,51.345z"/>
+	</g>
+
+	<g class="elements">
+		<g class="accommodations items" transform="translate(4,60)">
+			<g class="plus" ng-mousedown="plus.accommodation(point)">
+				<circle fill="#f88648" fill-opacity="1" cx="14" cy="14" r="14"/>
+				<rect x="13" y="7" fill="#ffffff" width="2" height="14"/>
+				<rect x="7" y="13" fill="#ffffff" width="14" height="2"/>
+			</g>
+			<g 
+			ng-repeat="accommodation in point.accommodations"
+			ng-context="contextmenu.accommodation(accommodation)"
+			ng-mousedown="open.tooltip.accommodation(accommodation,$event)"
+			class="accommodation"
+			id="accommodation-{{accommodation.id}}"
+			ng-include="'app/svg/accommodation.svg'"
+			ng-transform="translate(0,{{$index*5}})"
+			></g>
+			<foreignObject x="0" y="0" height="100%" width="28px" ng-show="point.accommodations.length">
+				<div class="dropdown-list">
+					<div class="up"><i class="fa fa-chevron-up"></i></div>
+					<div class="item plus" ng-mousedown="plus.accommodation(point)"><i class="fa fa-plus"></i>
+					</div>
+					<div class="item"
+						ng-repeat="accommodation in point.accommodations"
+						ng-mousedown="open.tooltip.accommodation(accommodation,$event)"
+						ng-context="contextmenu.accommodation(accommodation)"
+						><i class="tc tc-accommodation"></i>
+					</div>
+				</div>
+			</foreignObject>
+
+		</g>
+		<g class="activities items" transform="translate(36,75)">
+			<g class="plus" ng-click="plus.activity(point)">
+				<circle fill="#f88648" fill-opacity="1" cx="14" cy="14" r="14"/>
+				<rect x="13" y="7" fill="#ffffff" width="2" height="14"/>
+				<rect x="7" y="13" fill="#ffffff" width="14" height="2"/>
+			</g>
+			<g 
+			ng-repeat="activity in point.activities"
+			ng-context="contextmenu.activity(activity)"
+			ng-mousedown="open.tooltip.activity(activity,$event)"
+			class="activity"
+			id="activity-{{activity.id}}"
+			ng-include="'app/svg/activity.svg'"
+			ng-transform="translate(0,{{$index*5}})"
+			></g>
+			<foreignObject x="0" y="0" height="100%" width="28px" ng-show="point.activities.length > 0">
+				<div class="dropdown-list">
+					<div class="up"><i class="fa fa-chevron-up"></i></div>
+					<div class="item"
+						ng-repeat="activity in point.activities"
+						ng-mousedown="open.tooltip.activity(activity,$event)"
+						ng-context="contextmenu.activity(activity)"
+						><i class="tc tc-activity"></i>
+					</div>
+				</div>
+			</foreignObject>
+		</g>
+		<g class="notes items" transform="translate(68,60)">
+			<g class="plus" ng-click="plus.note(point)">
+				<circle fill="#f88648" fill-opacity="1" cx="14" cy="14" r="14"/>
+				<rect x="13" y="7" fill="#ffffff" width="2" height="14"/>
+				<rect x="7" y="13" fill="#ffffff" width="14" height="2"/>
+			</g>
+			<g 
+			ng-repeat="note in point.notes"
+			ng-context="contextmenu.note(note)"
+			ng-mousedown="open.tooltip.note(note,$event)"
+			class="note"
+			id="note-{{note.id}}"
+			ng-include="'app/svg/note.svg'"
+			ng-transform="translate(0,{{$index*5}})"
+			></g>
+			<foreignObject x="0" y="0" height="100%" width="28px" ng-show="point.notes.length > 1">
+				<div class="dropdown-list">
+					<div class="up"><i class="fa fa-chevron-up"></i></div>
+					<div class="item"
+						ng-repeat="note in point.notes"
+						ng-mousedown="open.tooltip.note(note,$event)"
+						ng-context="contextmenu.note(note)"
+						><i class="tc tc-note"></i>
+					</div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+</svg>

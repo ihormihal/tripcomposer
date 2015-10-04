@@ -1,0 +1,87 @@
+{
+  "success" : true,
+  "message": "",
+  "tripBoard":{
+    "points" : [
+      {
+        "id": 1,
+        "startDate": 1441889440504,
+        "endDate": 1441975840504,
+        "city": {
+          "coordinates": "50.4501:30.5234",
+          "name": "Kyiv"
+        },
+        "country": {
+          "name": "Ukraine"
+        },
+        "accommodations": [
+          {
+            "id": 1,
+            "title": "Accomodation title 1"
+          },
+          {
+            "id": 2,
+            "title": "Accomodation title 2"
+          }
+        ],
+        "activities": [],
+        "notes": []
+      },
+      {
+        "id": 2,
+        "startDate": 1442148640504,
+        "endDate": 1442235040504,
+        "city": {
+          "coordinates": "47.4831:19.0987",
+          "name": "Budapest"
+        },
+        "country": {
+          "name": "Hungary"
+        },
+        "accommodations": [],
+        "activities": [],
+        "notes": []
+      }
+    ],
+    "transfers": [
+      {
+        "id": 1,
+        "price": 0,
+        "comfortLevel": 0,
+        "speedLevel": 0,
+        "pointFrom": {
+          "id": 1,
+          "startDate": 1441889440504,
+          "endDate": 1441975840504,
+          "city": {
+            "coordinates": "50.4501:30.5234",
+            "name": "Kyiv"
+          },
+          "country": {
+            "name": "Ukraine"
+          }
+        },
+        "pointTo": {
+          "id": 2,
+          "startDate": 1442148640504,
+          "endDate": 1442235040504,
+          "city": {
+            "coordinates": "47.4831:19.0987",
+            "name": "Budapest"
+          },
+          "country": {
+            "name": "Hungary"
+          }
+        },
+        "startDate": 1441975840504,
+        "endDate": 0,
+        "transferTypes": [
+          "flight",
+          "train"
+        ]
+      }
+    ],
+    "tripTotal": "800",
+    "userTripTotal": "800"
+  }
+}

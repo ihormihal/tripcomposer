@@ -1,0 +1,12 @@
+Получить системную общую сумму путешествия
+POST http://tripcomposer.net/rest/service/tripboard/triptotal/get
+Request:
+{}
+
+Response:
+{
+    "type": "getTripTotalResponse",
+    "success": true,
+    "message": "",
+    "tripTotal": 0
+}

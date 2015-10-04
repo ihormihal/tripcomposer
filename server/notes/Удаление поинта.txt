@@ -1,0 +1,17 @@
+Удаление поинта
+POST http://tripcomposer.net/rest/service/remove/point
+JSON Request:
+{
+"pointId": 1
+}
+
+JSON Response:
+{
+    "type": "removePointResponse",
+    "success": true,
+    "message": "",
+    "tripBoard": {
+        "points": [],
+        "transfers": []
+    }
+}

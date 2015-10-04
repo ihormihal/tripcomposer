@@ -1,0 +1,6 @@
+{
+    "type": "setUserTripTotalResponse",
+    "success": true,
+    "message": "",
+    "userTripTotal": 1200
+}

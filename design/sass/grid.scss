@@ -1,0 +1,103 @@
+$gap: 1rem;
+$columns: 12;
+$max: 1140px;
+
+@mixin setColClass($prefix){
+	@for $i from 1 through $columns {
+		.col-#{$prefix}-#{$i} {
+			width : ($i / $columns)*100%;
+		}
+		.col-#{$prefix}-offset-#{$i} {
+			margin-left: ($i / $columns)*100%;
+		}
+		.float-#{$prefix}-right {
+			float: right;
+		}
+	}
+}
+@mixin setHelpClass($prefix){
+	.show-#{$prefix} {
+		display: block;
+	}
+	.hide-#{$prefix} {
+		display: none;
+	}
+	.center-#{$prefix} {
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.text-center-#{$prefix} {
+		text-align: center;
+	}
+}
+
+.container {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: $max;
+	padding: 0 $gap;
+	margin: 0 auto;
+}
+*[class ^= "col-"] {
+	position: relative;
+	min-height: 1px;
+	padding-left: $gap;
+	padding-right: $gap;
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+}
+*[class ^= "show-"] {
+	display: none;
+}
+*[class ^= "hide-"] {
+	display: block;
+}
+.row {
+	clear: both;
+	margin-left: -$gap;
+	margin-right: -$gap;
+	&.gaprow {
+		*[class ^= "col-"] {margin-bottom: $gap;}
+	}
+	&:after {content: ''; display: block; clear: both;}
+}
+.clear {clear: both;}
+.gap:after {content: ''; display: block; height: $gap;}
+.right {float: right;}
+.left {float: left;}
+.center {margin-left: auto; margin-right: auto;}
+.text-right {text-align: right;}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+
+/*** Swith OFF ***/
+@include setColClass(xs);
+@media only screen and (min-width: 361px) {
+	@include setColClass(sm);
+}
+@media only screen and (min-width: 769px) {
+	@include setColClass(md);
+}
+@media only screen and (min-width: 1008px) {
+	@include setColClass(lg);
+}
+@media only screen and (min-width: 1265px) {
+	@include setColClass(xl);
+}
+
+/*** Swith ON ***/
+@media only screen and (min-width: 1264px) {
+	@include setHelpClass(xl);
+}
+@media only screen and (max-width: 1264px) {
+	@include setHelpClass(lg);
+}
+@media only screen and (max-width: 1007px) {
+	@include setHelpClass(md);
+}
+@media only screen and (max-width: 768px) {
+	@include setHelpClass(sm);
+}
+@include setHelpClass(xs);

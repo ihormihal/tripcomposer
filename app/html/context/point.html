@@ -1,0 +1,12 @@
+<div class="context-menu" style="top: {{context.y}}px; left: {{context.x}}px">
+	<ul class="list">
+		<li ng-click="plus.transfer(context.point);"><i class="fa fa-plane"></i>Add Transfer</li>
+		<li ng-click="plus.accommodation(context.point);"><i class="fa fa-home"></i>Add Accomodation</li>
+		<li ng-click="plus.activity(context.point)"><i class="fa fa-camera"></i>Add Activity</li>
+		<li ng-click="plus.note(context.point)"><i class="fa fa-file"></i>Add Note</li>
+	</ul>
+	<ul class="list">
+		<li ng-click="edit.point(context.point)"><i class="fa fa-pencil"></i>Edit</li>
+		<li ng-click="remove.point(context.point)"><i class="fa fa-times"></i>Delete</li>
+	</ul>
+</div>

@@ -1,0 +1,19 @@
+select, input[type=text], input[type=email], input[type=password]  {
+	border: none;
+	border-bottom: 1px solid $light_grey;
+	height: 2rem;
+	font-size: 1rem;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	@include transition(border-color 0.25s ease);
+	&:focus {
+		border-color: $grey;
+	}
+	&.single {margin-bottom: 1rem;}
+}
+input[disabled] {
+	color: $grey;
+	background-color: transparent;
+	border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
+}

@@ -1,0 +1,91 @@
+Добавить трансфер
+POST http://tripcomposer.net/rest/service/transfer/add
+Request:
+{
+"pointFromId": 1,
+"pointToId": 2,
+"startDate": 1440460800000,
+"transferTypes": ["flight", "train", "bus"]
+}
+
+Response:
+{
+    "type": "addTransferResponse",
+    "success": true,
+    "message": "",
+    "tripBoard": {
+        "points": [
+            {
+                "id": 1,
+                "startDate": 1440028800000,
+                "endDate": 1440460800000,
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "LVOV"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            },
+            {
+                "id": 2,
+                "startDate": 1440547200000,
+                "endDate": 1440806400000,
+                "city": {
+                    "coordinates": "xxx:zzz",
+                    "name": "Kyiv"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            }
+        ],
+        "transfers": [
+            {
+                "id": 1,
+                "price": 0,
+                "comfortLevel": 0,
+                "speedLevel": 0,
+                "pointFrom": {
+                    "id": 1,
+                    "startDate": 1440028800000,
+                    "endDate": 1440460800000,
+                    "city": {
+                        "coordinates": "xxx:yyy",
+                        "name": "LVOV"
+                    },
+                    "country": {
+                        "name": "Ukraine"
+                    }
+                },
+                "pointTo": {
+                    "id": 2,
+                    "startDate": 1440547200000,
+                    "endDate": 1440806400000,
+                    "city": {
+                        "coordinates": "xxx:zzz",
+                        "name": "Kyiv"
+                    },
+                    "country": {
+                        "name": "Ukraine"
+                    }
+                },
+                "startDate": 1440460800000,
+                "endDate": 0,
+                "transferTypes": [
+                    "bus",
+                    "flight",
+                    "train"
+                ]
+            }
+        ],
+        "tripTotal": 0,
+        "userTripTotal": 0
+    }
+}

@@ -1,0 +1,12 @@
+Получить пользовательскую общую сумму путешествия
+POST http://tripcomposer.net/rest/service/tripboard/usertotal/get
+Request:
+{}
+
+Response:
+{
+    "type": "getUserTripTotalResponse",
+    "success": true,
+    "message": "",
+    "userTripTotal": 1200
+}

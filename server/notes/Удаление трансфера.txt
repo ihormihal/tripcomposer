@@ -1,0 +1,50 @@
+Удаление трансфера
+POST http://tripcomposer.net/rest/service/transfer/remove
+Request:
+{
+"transferId": 1
+}
+
+Response:
+{
+    "type": "removeTransferResponse",
+    "success": true,
+    "message": "",
+    "tripBoard": {
+        "points": [
+            {
+                "id": 1,
+                "startDate": 1440028800000,
+                "endDate": 1440460800000,
+                "city": {
+                    "coordinates": "xxx:yyy",
+                    "name": "LVOV"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            },
+            {
+                "id": 2,
+                "startDate": 1440547200000,
+                "endDate": 1440806400000,
+                "city": {
+                    "coordinates": "xxx:zzz",
+                    "name": "Kyiv"
+                },
+                "country": {
+                    "name": "Ukraine"
+                },
+                "accommodations": [],
+                "activities": [],
+                "notes": []
+            }
+        ],
+        "transfers": [],
+        "tripTotal": 0,
+        "userTripTotal": 0
+    }
+}
